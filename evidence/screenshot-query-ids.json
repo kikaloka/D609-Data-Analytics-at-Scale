@@ -1,0 +1,32 @@
+{
+  "customer_landing": {
+    "query_id": "0bef036a-7c85-42d5-9370-ef893296ce5a",
+    "sql": "SELECT * FROM stedi.customer_landing ORDER BY email LIMIT 10",
+    "state": "SUCCEEDED"
+  },
+  "accelerometer_landing": {
+    "query_id": "8e65d635-c6a3-4e6d-8de6-4467d435dc61",
+    "sql": "SELECT * FROM stedi.accelerometer_landing ORDER BY timestamp LIMIT 10",
+    "state": "SUCCEEDED"
+  },
+  "step_trainer_landing": {
+    "query_id": "6e5fe5e9-5b92-4b3d-b9fc-bba478136cb2",
+    "sql": "SELECT * FROM stedi.step_trainer_landing ORDER BY sensorreadingtime LIMIT 10",
+    "state": "SUCCEEDED"
+  },
+  "customer_landing_missing_consent": {
+    "query_id": "709f8aa3-c361-4b1c-83dd-557590574352",
+    "sql": "SELECT email, serialnumber, sharewithresearchasofdate FROM stedi.customer_landing WHERE sharewithresearchasofdate IS NULL LIMIT 10",
+    "state": "SUCCEEDED"
+  },
+  "customer_trusted": {
+    "query_id": "a86f4bdd-1aaa-47f6-81c2-61120ee890e8",
+    "sql": "SELECT email, serialnumber, sharewithresearchasofdate FROM stedi.customer_trusted ORDER BY email LIMIT 10",
+    "state": "SUCCEEDED"
+  },
+  "all_table_counts": {
+    "query_id": "5b6069dd-08e7-4592-86ac-0078dd03950e",
+    "sql": "SELECT 'customer_landing' AS table_name, COUNT(*) AS actual_rows FROM stedi.customer_landing UNION ALL SELECT 'accelerometer_landing' AS table_name, COUNT(*) AS actual_rows FROM stedi.accelerometer_landing UNION ALL SELECT 'step_trainer_landing' AS table_name, COUNT(*) AS actual_rows FROM stedi.step_trainer_landing UNION ALL SELECT 'customer_trusted' AS table_name, COUNT(*) AS actual_rows FROM stedi.customer_trusted UNION ALL SELECT 'accelerometer_trusted' AS table_name, COUNT(*) AS actual_rows FROM stedi.accelerometer_trusted UNION ALL SELECT 'customers_curated' AS table_name, COUNT(*) AS actual_rows FROM stedi.customers_curated UNION ALL SELECT 'step_trainer_trusted' AS table_name, COUNT(*) AS actual_rows FROM stedi.step_trainer_trusted UNION ALL SELECT 'machine_learning_curated' AS table_name, COUNT(*) AS actual_rows FROM stedi.machine_learning_curated",
+    "state": "SUCCEEDED"
+  }
+}

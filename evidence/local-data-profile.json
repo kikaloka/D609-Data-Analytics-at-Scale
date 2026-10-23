@@ -1,0 +1,95 @@
+{
+  "customer": {
+    "rows": 956,
+    "fields": {
+      "birthDay": [
+        "str"
+      ],
+      "customerName": [
+        "str"
+      ],
+      "email": [
+        "str"
+      ],
+      "lastUpdateDate": [
+        "int"
+      ],
+      "phone": [
+        "str"
+      ],
+      "registrationDate": [
+        "int"
+      ],
+      "serialNumber": [
+        "str"
+      ],
+      "shareWithFriendsAsOfDate": [
+        "NoneType",
+        "int"
+      ],
+      "shareWithPublicAsOfDate": [
+        "NoneType",
+        "int"
+      ],
+      "shareWithResearchAsOfDate": [
+        "NoneType",
+        "int"
+      ]
+    }
+  },
+  "accelerometer": {
+    "rows": 81273,
+    "fields": {
+      "timestamp": [
+        "int"
+      ],
+      "user": [
+        "str"
+      ],
+      "x": [
+        "float"
+      ],
+      "y": [
+        "float"
+      ],
+      "z": [
+        "float"
+      ]
+    }
+  },
+  "step_trainer": {
+    "rows": 28680,
+    "fields": {
+      "distanceFromObject": [
+        "int"
+      ],
+      "sensorReadingTime": [
+        "int"
+      ],
+      "serialNumber": [
+        "str"
+      ]
+    }
+  },
+  "customer_trusted": {
+    "rows": 482
+  },
+  "accelerometer_trusted": {
+    "rows": 40981
+  },
+  "customers_curated": {
+    "rows": 482
+  },
+  "step_trainer_trusted": {
+    "rows": 14460
+  },
+  "machine_learning_curated": {
+    "rows": 43681
+  },
+  "integrity_checks": {
+    "trusted_customers_without_consent": 0,
+    "trusted_accelerometer_without_consented_customer": 0,
+    "duplicate_curated_customer_emails": 0,
+    "duplicate_trusted_step_records": 0
+  }
+}

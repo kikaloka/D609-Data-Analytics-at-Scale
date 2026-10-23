@@ -1,0 +1,114 @@
+{
+  "customer_landing": {
+    "query_id": "413f7ee2-3f94-4eee-946d-7bdfe0dec987",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.customer_landing",
+    "actual": 956,
+    "expected": 956,
+    "passed": true,
+    "bytes_scanned": 293777
+  },
+  "accelerometer_landing": {
+    "query_id": "d86c899a-3bd4-4ca8-afe6-47012bf8e7be",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.accelerometer_landing",
+    "actual": 81273,
+    "expected": 81273,
+    "passed": true,
+    "bytes_scanned": 6871328
+  },
+  "step_trainer_landing": {
+    "query_id": "7dea94a5-a612-4ea9-ab49-e8c422736424",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.step_trainer_landing",
+    "actual": 28680,
+    "expected": 28680,
+    "passed": true,
+    "bytes_scanned": 3298200
+  },
+  "customer_trusted": {
+    "query_id": "43cde42a-0094-438d-b3ec-b9c309c8f1ad",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.customer_trusted",
+    "actual": 482,
+    "expected": 482,
+    "passed": true,
+    "bytes_scanned": 0
+  },
+  "accelerometer_trusted": {
+    "query_id": "58b42c46-bcfd-40b8-acb2-0bdf4d4e44e4",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.accelerometer_trusted",
+    "actual": 40981,
+    "expected": 40981,
+    "passed": true,
+    "bytes_scanned": 0
+  },
+  "customers_curated": {
+    "query_id": "61c3685a-45aa-484d-a6cb-81b432dacb78",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.customers_curated",
+    "actual": 482,
+    "expected": 482,
+    "passed": true,
+    "bytes_scanned": 0
+  },
+  "step_trainer_trusted": {
+    "query_id": "026e07cf-e35d-4b45-bdbb-bf2420516c2f",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.step_trainer_trusted",
+    "actual": 14460,
+    "expected": 14460,
+    "passed": true,
+    "bytes_scanned": 0
+  },
+  "machine_learning_curated": {
+    "query_id": "a83c4d3f-bc9e-46a7-84e4-8a7bffb6a725",
+    "query": "SELECT COUNT(*) AS actual_rows FROM stedi.machine_learning_curated",
+    "actual": 43681,
+    "expected": 43681,
+    "passed": true,
+    "bytes_scanned": 0
+  },
+  "missing_consent_in_trusted": {
+    "query_id": "1313cfb7-650e-4d08-89ef-a5f3c20a66af",
+    "query": "SELECT COUNT(*) FROM stedi.customer_trusted WHERE sharewithresearchasofdate IS NULL",
+    "actual": 0,
+    "expected": 0,
+    "passed": true,
+    "bytes_scanned": 0
+  },
+  "orphan_accelerometer": {
+    "query_id": "87f919cf-3654-449e-b39b-07f84d290358",
+    "query": "SELECT COUNT(*) FROM stedi.accelerometer_trusted a WHERE NOT EXISTS (SELECT 1 FROM stedi.customer_trusted c WHERE c.email=a.user)",
+    "actual": 0,
+    "expected": 0,
+    "passed": true,
+    "bytes_scanned": 9896
+  },
+  "duplicate_curated_customers": {
+    "query_id": "cceddc82-2698-4a99-8344-74f0f1f470ea",
+    "query": "SELECT COUNT(*) FROM (SELECT email FROM stedi.customers_curated GROUP BY email HAVING COUNT(*)>1)",
+    "actual": 0,
+    "expected": 0,
+    "passed": true,
+    "bytes_scanned": 4615
+  },
+  "mismatched_training_timestamps": {
+    "query_id": "74189df0-93c3-4803-910a-787b8d218804",
+    "query": "SELECT COUNT(*) FROM stedi.machine_learning_curated WHERE sensorreadingtime <> timestamp",
+    "actual": 0,
+    "expected": 0,
+    "passed": true,
+    "bytes_scanned": 244202
+  },
+  "unconsented_training_users": {
+    "query_id": "36cbb293-7860-495c-b7ca-88f51ef9c1c5",
+    "query": "SELECT COUNT(*) FROM stedi.machine_learning_curated m WHERE NOT EXISTS (SELECT 1 FROM stedi.customer_trusted c WHERE c.email=m.user)",
+    "actual": 0,
+    "expected": 0,
+    "passed": true,
+    "bytes_scanned": 67666
+  },
+  "customer_landing_missing_consent": {
+    "query_id": "2d7b37ba-1531-4301-90cc-2c1a090a3ab5",
+    "query": "SELECT COUNT(*) FROM stedi.customer_landing WHERE sharewithresearchasofdate IS NULL",
+    "actual": 474,
+    "expected": 474,
+    "passed": true,
+    "bytes_scanned": 293777
+  }
+}

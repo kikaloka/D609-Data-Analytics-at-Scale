@@ -1,0 +1,37 @@
+[
+  {
+    "job": "customer_landing_to_trusted",
+    "run_id": "jr_d9fe1ef597bda455a82e03d4914934ba6906042cecffe439368dbbdfb1ac16b5",
+    "state": "SUCCEEDED",
+    "error": null,
+    "seconds": 62
+  },
+  {
+    "job": "accelerometer_landing_to_trusted",
+    "run_id": "jr_f6ff4bec69377db8d0716901c37cbc2cb3be6f93ae1a97dbe8efc2cb6455d6a3",
+    "state": "SUCCEEDED",
+    "error": null,
+    "seconds": 63
+  },
+  {
+    "job": "customer_trusted_to_curated",
+    "run_id": "jr_d87d2cc4df907fe1b5f84332dd7b43b35d72ba2143e0d61fc9980cc7bc3b4968",
+    "state": "SUCCEEDED",
+    "error": null,
+    "seconds": 54
+  },
+  {
+    "job": "step_trainer_trusted",
+    "run_id": "jr_5f7130d07ebff43e62eb1f8b00756e739d08b76d377be863d8afd8301b5eb03c",
+    "state": "SUCCEEDED",
+    "error": null,
+    "seconds": 54
+  },
+  {
+    "job": "machine_learning_curated",
+    "run_id": "jr_c237566314e176dbcd4a0a86a2462589e5228fadf87c19b5a644a1e8dc534ca1",
+    "state": "SUCCEEDED",
+    "error": null,
+    "seconds": 53
+  }
+]

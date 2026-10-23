@@ -1,0 +1,7 @@
+{
+  "account": "932469575102",
+  "bucket": "d609-stedi-932469575102-20261023",
+  "database": "stedi",
+  "role": "arn:aws:iam::932469575102:role/D609-STEDI-GlueRole",
+  "output_root": "s3://d609-stedi-932469575102-20261023/runs/1792738079"
+}

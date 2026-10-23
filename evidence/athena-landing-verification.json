@@ -1,0 +1,15 @@
+{
+  "source": "Actual Athena query executed in the D609 course lab; observed through CloudShell",
+  "query_id": "8bbce4af-f74d-4903-900b-c073d2482024",
+  "state": "SUCCEEDED",
+  "account": "932469575102",
+  "region": "us-east-1",
+  "bucket": "d609-stedi-932469575102-20261023",
+  "database": "stedi",
+  "rows": {
+    "customer_landing": 956,
+    "accelerometer_landing": 81273,
+    "step_trainer_landing": 28680
+  },
+  "limitation": "Trusted and curated Glue jobs have not yet run. Awaiting scoped execution-role approval."
+}
