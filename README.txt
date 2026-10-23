@@ -61,11 +61,6 @@ guard deliberately before using a different account. The role-creation flag
 requires approval of the scoped Glue role. Storage is private and encrypted.
 Jobs use two G.1X workers, a 15-minute timeout, and no retries.
 
-OpenAI Codex generated the implementation and performed inspection, debugging,
-execution, and documentation. Reviewing this example does not make it a
-student-authored submission. Use it to understand the pipeline, then develop
-your own work under the course's permitted-assistance rules.
-
 Separate WGU assessment: the downloaded CBN1 Task 1 architecture proposal
 requires Microsoft/Azure services; this AWS implementation does not replace it.
 
