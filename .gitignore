@@ -1,0 +1,5 @@
+data/
+.env
+.aws/
+__pycache__/
+*.pyc
