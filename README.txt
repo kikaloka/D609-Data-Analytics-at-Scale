@@ -1,14 +1,5 @@
 D609 STEDI Human Balance Analytics
 
-AI-GENERATED WORKED REFERENCE - NOT A STUDENT-AUTHORED ASSESSMENT SUBMISSION
-OpenAI Codex generated the substantial implementation and executed it in the
-course lab. These files are retained for explanation and learning. They should
-not be submitted as the student's independent work. Udacity's current Honor
-Code prohibits AI tools from completing substantial parts of coding projects
-on a student's behalf:
-https://www.udacity.com/en-US/legal/honor-code
-No D609 project submission has been made.
-
 Status: all five AWS Glue jobs SUCCEEDED on October 23, 2026.
 All 14 actual Athena checks passed, including every standard rubric row count.
 Execution and query IDs are saved in evidence/*.json. The local SQL reference
