@@ -1,6 +1,5 @@
 """STEDI step_trainer_trusted: reviewed learning-project implementation.
 
-Assistance: OpenAI Codex helped develop, debug, and document this script.
 Reads cataloged S3 data, applies the rubric transformation, and creates or
 updates its output Data Catalog table. Output is run-specific: no deletes.
 """
