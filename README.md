@@ -1,37 +1,46 @@
-# STEDI course project
+# STEDI: from sensor readings to research-ready tables
 
-Five AWS Glue Studio jobs move customer, phone-motion, and step-trainer data from landing through trusted and curated layers. Research consent determines customer eligibility; the final table pairs sensor readings by timestamp.
+STEDI collects customer registrations, phone-motion readings, and step-trainer measurements. This project brings those sources together in an AWS lakehouse so researchers can work with readings from customers who recorded research consent.
 
-## Jobs and verified results
+AWS Glue Studio defines five visual jobs. Spark runs their SQL transformations, S3 holds JSON and Parquet files, the Glue Data Catalog describes the tables, and Athena checks the results.
 
-Run these jobs in order. All tables use the `stedi` database.
+```text
+Customer landing -> consent filter -> Customer trusted
+Phone landing + Customer trusted -> Accelerometer trusted
+Customer trusted + Accelerometer trusted -> Customers curated
+Device landing + Customers curated -> Step-trainer trusted
+Step-trainer trusted + Accelerometer trusted -> Machine-learning curated
+```
 
-| Script in jobs/ | Actual output table | Rows |
-|---|---|---:|
-| customer_landing_to_trusted.py | erica_customer_trusted | 482 |
-| accelerometer_landing_to_trusted.py | erica_accelerometer_trusted | 40,981 |
-| customer_trusted_to_curated.py | erica_customers_curated | 482 |
-| step_trainer_trusted.py | erica_step_trainer_trusted | 14,460 |
-| machine_learning_curated.py | erica_machine_learning_curated | 43,681 |
+## What the project demonstrates
 
-Landing counts: `customer_landing` 956; `accelerometer_landing` 81,273; `step_trainer_landing` 28,680. The `erica_` prefix identifies the verified visual-job outputs; `customers_curated` is plural. Exports retain the actual lab-specific S3 paths and table names.
+- Five dependent Glue Studio workflows with preserved Python exports.
+- JSON landing tables and Snappy Parquet outputs in landing, trusted, and curated layers.
+- Consent filtering, email and serial-number joins, and deliberate row selection.
+- Athena validation that distinguishes sample rows from full-table counts.
+- Documentation of what the timestamp join establishes and what it cannot establish.
 
-## Evidence
+## Results and limits
 
-The four sample screenshots in `evidence/` are named `customer_landing.png`, `accelerometer_landing.png`, `step_trainer_landing.png`, and `customer_trusted.png`. Samples do not establish full-table counts.
+**D609 Udacity submission passed**, as confirmed by Erica after evaluation. This portfolio preserves the submitted implementation and historical evidence. Preparing these guides did not run AWS jobs or query AWS.
 
-- [Counts and consent](evidence/rubric-counts-and-consent.png) and [complementary results](evidence/rubric-counts-results.png) collectively show all eight required counts, 474 missing-consent customer landing rows, and zero missing-consent customer trusted rows. The paired views cover rows crossed by the AWS sticky footer.
-- [Blank landing consent examples](evidence/landing-missing-consent.png) shows multiple rows selected with `IS NULL`.
-- [Recorded values and query reference](evidence/rubric-counts-and-consent.txt) accompany the screenshots. Reusable count and consent queries and three landing-table definitions are in `sql/`.
+The October 26, 2026 Athena record shows **43,681 final rows**, **482 trusted customers**, and **zero trusted customer rows with missing research consent**. See [Validation](docs/VALIDATION.md) for all eight table counts and source evidence. Course acceptance and a successful data check are separate kinds of evidence.
 
-Results were observed October 26, 2026. Only AWS account/session banners were masked in these public-safe captures; technical evidence is unchanged. Preparing this package did not rerun AWS jobs.
+Equal timestamps do not prove that a phone and device belong to the same person. The jobs do not enforce consent effective at reading time, anonymize output, or train a model. Reruns can append files to existing output folders. These are limits of the course implementation, not changes made by this portfolio refresh.
 
-## Limits
+## Find your way around
 
-Equal timestamps do not prove that the phone and device belong to the same person. These jobs do not apply consent effective at reading time or anonymize output. Rerunning into an existing output folder can append duplicate files; plan fresh output locations and matching catalog settings. Exact catalog naming and course acceptance remain the evaluator's decision.
+| Start here | What you will find |
+|---|---|
+| [Walkthrough](docs/WALKTHROUGH.md) | Follow each transformation from source through SQL to output |
+| [Glossary](docs/GLOSSARY.md) | Plain-language terms with project examples |
+| [Architecture](docs/ARCHITECTURE.md) | Dependencies, row grain, service roles, and tradeoffs |
+| [Jobs](jobs/) | Five preserved Glue Studio Python exports |
+| [SQL](sql/) | Landing definitions and count/consent queries |
+| [Evidence](evidence/README.md) | Original Athena screenshots and their limits |
+| [Setup](docs/SETUP.md) | Offline review and future reproduction prerequisites |
+| [Validation](docs/VALIDATION.md) | Table mapping, historical results, and diagnostics |
+| [Acknowledgments](docs/ACKNOWLEDGMENTS.md) | Udacity sources and assistance |
+| [Version notes](docs/VERSION-NOTES.md) | Passing baseline and scope of this update |
 
-## Sources and assistance
-
-This project builds on the [Udacity STEDI starter datasets and project materials](https://github.com/udacity/nd027-Data-Engineering-Data-Lakes-AWS-Exercises/tree/main/project/starter). The requirements and rubric came from the WGU Udacity classroom.
-
-I used AI to help develop and debug the code, check the results, and organize the project documentation and screenshots.
+For a quick portfolio review, inspect the consent transformation, compare its sample screenshot with the full-table consent check, then read the final join and its limitations. No AWS connection is needed.
