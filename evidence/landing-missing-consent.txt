@@ -1,0 +1,3 @@
+Athena query 650e7db1-6697-4618-abd2-940fed3dc0c6
+Completed; 5 rows returned. All five sharewithresearchasofdate cells are blank (SQL IS NULL).
+SQL: SELECT sharewithresearchasofdate FROM stedi.customer_landing WHERE sharewithresearchasofdate IS NULL LIMIT 5;

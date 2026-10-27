@@ -1,0 +1,1 @@
+SELECT sharewithresearchasofdate FROM stedi.customer_landing WHERE sharewithresearchasofdate IS NULL LIMIT 5;
